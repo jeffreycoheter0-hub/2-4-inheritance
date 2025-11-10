@@ -1,21 +1,26 @@
 const Person = require('./Person');
 
 // Refactor this code to use inheritance!
-class Student {
+class Student extends Person {
+  // A field unique to Students
   courses = [];
 
   constructor(first, last, age, subject, school) {
-    this.firstName = first;
-    this.lastName = last;
-    this.age = age;
+    // Invoke the superclass contructor
+    super(first, last, age);
+
+    //Assign instance properties unique to Students
     this.subject = subject;
     this.school = school;
   }
-  fullName() {
-    return `${this.firstName} ${this.lastName}`;
-  }
+
+  // Fullname is inherited from person
+  // fullName() {
+  //   return `${this.firstName} ${this.lastName}`;
+  // }
+
   introduce() {
-    return `Hi, I'm ${this.firstName} and I'm ${this.age} years old. I am studying ${this.subject} at ${this.school}.`;
+    return `${super.introduce()} I am studying ${this.subject} at ${this.school}.`;
   }
   enrollInCourse(courseName) {
     this.courses.push(courseName);
